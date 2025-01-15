@@ -2,7 +2,7 @@
 
 #### Step 1: Architecture
 
-![system_architecture]
+![system_architecture](https://github.com/Chukwuka1488/palantir-data-pipeline/blob/main/system_architecture.jpg?raw=true)
 
 Key Components:
 

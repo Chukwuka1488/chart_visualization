@@ -1,0 +1,31 @@
+flowchart TB
+    subgraph External
+        P[Palantir API]
+    end
+
+    subgraph Backend
+        subgraph Task Queue
+            C[Celery Workers]
+            R[(Redis)]
+            B[Celery Beat]
+        end
+        
+        F[Flask API Server]
+        subgraph Database
+            M[(MongoDB)]
+        end
+        
+        O[OpenAPI/Swagger]
+    end
+
+    subgraph Frontend
+        FE[Frontend Client]
+    end
+
+    B -->|Schedule Tasks| R
+    R -->|Tasks| C
+    P -->|JSON Data| C
+    C -->|Store Data| M
+    F -->|Read Data| M 
+    F -->|API Documentation| O
+    FE -->|API Calls| F
